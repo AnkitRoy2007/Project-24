@@ -6,6 +6,9 @@ const Body = Matter.Body;
 var engine, world;
 
 var ground,paper;
+var Play = 1;
+var End = 0;
+var gameState = Play;
 
 function setup(){
     var canvas = createCanvas(1200,400);
@@ -26,18 +29,20 @@ function setup(){
 
 function draw(){
     background(25);
-   /* if(paper.pos.x === 700){
-        Matter.Body.applyForce(paper.body,paper.body.position,{x:2,y:3});
-    }*/
+
     ball.display();
     log1.display();
     log2.display();
     log3.display();
     ground.display();
     keyPressed();
+    
 }
 function keyPressed(){
     if(keyCode == UP_ARROW){
-       Matter.Body.applyForce(ball.body,ball.body.position,{x : 0.04,y : -0.25});
+       Matter.Body.applyForce(ball.body,ball.body.position,{x : 0.4,y : -0.4});
+    }
+    if(keyCode == DOWN_ARROW) {
+        Matter.Body.applyForce(ball.body,ball.body.position,{x : 0.04,y : 0.25});
     }
  }
